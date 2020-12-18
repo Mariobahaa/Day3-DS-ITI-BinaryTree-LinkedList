@@ -120,39 +120,39 @@ public:
 
     void Display(){
         if(root==NULL) return;
-        LLStack<Node<T>> stk;
-        stk.push(root);
-        int op = 0;
-        while(!stk.isEmpty())
+        LLStack<Node<T>> stk; //define a new stack of Nodes of T (contains pointers to nodes not actual nodes)
+        stk.push(root); //push root to stack (stk now contains pointer to Node of T)
+        int op = 0; // initializing Last Operation done as push (0) -> pop (1)
+        while(!stk.isEmpty()) //Iterate as long as the stack is not empty
         {
-            Node<T>*current = stk.last();
+            Node<T>*current = stk.last(); //Top of Stack
             if(op==0) //last operation was Push
             {
 
 
-            if(current->Left== NULL){
-                cout<<(current->Data)<<endl;
-                stk.pop();
-                op=1;
-                if(current->Right!=NULL)
+            if(current->Left== NULL){ //If Node has no left
+                cout<<(current->Data)<<endl;    //display data
+                stk.pop();                      //pop from stack
+                op=1;                           //set last operation as Pop
+                if(current->Right!=NULL)        //check right
                 {
-                    stk.push(current->Right);
-                    op=0;
+                    stk.push(current->Right);   //if node has right push the right into stack
+                    op=0;                       //set last operation as Push
                 }
             }
             else{
-                stk.push(current->Left);
-                op=0;
+                stk.push(current->Left);        //If node has left, push left into stack
+                op=0;                           //set last operation as Push
             }
             }
-            else{
-                 cout<<(current->Data)<<endl;
-                stk.pop();
-                op=1;
-                if(current->Right!=NULL)
+            else{ //if last operation was Pop
+                cout<<(current->Data)<<endl;    //display data
+                stk.pop();                      //pop from stack
+                op=1;                           //set last operation as Pop
+                if(current->Right!=NULL)        //check right
                 {
-                    stk.push(current->Right);
-                    op=0;
+                    stk.push(current->Right);   //if node has right push the right into stack
+                    op=0;                       //set last operation as Push
                 }
             }
         }
