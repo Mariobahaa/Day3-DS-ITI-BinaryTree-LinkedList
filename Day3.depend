@@ -1,10 +1,22 @@
 # depslib dependency file v1.0
-1608124020 source:e:\career\iti\cdb\day3-ds-iti\main.cpp
+1608255753 source:e:\career\iti\cdb\day3-ds-iti\main.cpp
 	<iostream>
 	"BinaryTree.h"
+	"LinkedList.h"
+	"LLStack.h"
 
-1608124012 e:\career\iti\cdb\day3-ds-iti\include\binarytree.h
+1608256483 e:\career\iti\cdb\day3-ds-iti\include\binarytree.h
 	"Node.h"
+	"../LLStack.h"
 
-1608116158 e:\career\iti\cdb\day3-ds-iti\include\node.h
+1608253679 e:\career\iti\cdb\day3-ds-iti\include\node.h
+
+1608250419 e:\career\iti\cdb\day3-ds-iti\linkedlist.h
+	"lNode.h"
+
+1608250474 e:\career\iti\cdb\day3-ds-iti\lnode.h
+
+1608251903 e:\career\iti\cdb\day3-ds-iti\llstack.h
+	"LinkedList.h"
+	<iostream>
 

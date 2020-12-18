@@ -2,12 +2,14 @@
 #define BINARYTREE_H
 
 #include "Node.h"
+#include "../LLStack.h"
 
 using namespace std;
 
+template<class T>
 class BinaryTree
 {
-    Node *root;
+    Node<T> *root;
 
 public:
     BinaryTree()
@@ -15,9 +17,9 @@ public:
         root = NULL;
     }
 
-    void Add(int data)
+    void Add(T data)
     {
-        Node *newNode = new Node(data);
+        Node<T> *newNode = new Node<T>(data);
 
         if(root == NULL)
         {
@@ -25,7 +27,7 @@ public:
         }
         else
         {
-            Node *current = root, *parent;
+            Node<T> *current = root, *parent;
 
             while(current != NULL)
             {
@@ -43,10 +45,10 @@ public:
         }
     }
 
-    void Delete(int data)
+    void Delete(T data)
     {
-        Node *pDelete = Search(data);
-        Node *temp;
+        Node<T> *pDelete = Search(data);
+        Node<T> *temp;
 
         if(pDelete == NULL)
             return;
@@ -77,8 +79,8 @@ public:
         }
         else
         {
-            Node *parent = GetParent(pDelete);
-            Node *target;
+            Node<T> *parent = GetParent(pDelete);
+            Node<T> *target;
 
             if(pDelete->Left == NULL && pDelete->Right == NULL)
             {
@@ -116,10 +118,50 @@ public:
         Display(root);
     }
 
+    void Display(){
+        if(root==NULL) return;
+        LLStack<Node<T>> stk;
+        stk.push(root);
+        int op = 0;
+        while(!stk.isEmpty())
+        {
+            Node<T>*current = stk.last();
+            if(op==0) //last operation was Push
+            {
+
+
+            if(current->Left== NULL){
+                cout<<(current->Data)<<endl;
+                stk.pop();
+                op=1;
+                if(current->Right!=NULL)
+                {
+                    stk.push(current->Right);
+                    op=0;
+                }
+            }
+            else{
+                stk.push(current->Left);
+                op=0;
+            }
+            }
+            else{
+                 cout<<(current->Data)<<endl;
+                stk.pop();
+                op=1;
+                if(current->Right!=NULL)
+                {
+                    stk.push(current->Right);
+                    op=0;
+                }
+            }
+        }
+    }
+
 private:
-    Node* Search(int data)
+    Node<T>* Search(T data)
     {
-        Node *current = root;
+        Node<T> *current = root;
 
         while(current != NULL)
         {
@@ -135,9 +177,9 @@ private:
         return NULL;
     }
 
-    Node* GetParent(Node *child)
+    Node<T>* GetParent(Node<T>*child)
     {
-        Node *parent = root;
+        Node<T> *parent = root;
 
         while(parent != NULL)
         {
@@ -153,7 +195,7 @@ private:
         return NULL;
     }
 
-    void Display(Node *pDisplay)
+    void Display(Node<T> *pDisplay)
     {
         if(pDisplay == NULL)
             return;
@@ -164,6 +206,8 @@ private:
 
         Display(pDisplay->Right);
     }
+
+
 };
 
 #endif // BINARYTREE_H

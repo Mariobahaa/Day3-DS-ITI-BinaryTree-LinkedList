@@ -1,11 +1,11 @@
 #ifndef NODE_H
 #define NODE_H
 
-
+template<class T>
 class Node
 {
     public:
-        int Data;
+        T Data;
         Node* Left, *Right;
 
         Node(int data)

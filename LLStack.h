@@ -1,7 +1,7 @@
 #ifndef LLSTACK_H
 #define LLSTACK_H
 
-#include "E:\Career\ITI\CDB\Day1-DS-ITI\include\LinkedList.h"
+#include "LinkedList.h"
 #include<iostream>
 
 using namespace std;
@@ -31,6 +31,9 @@ class LLStack
 
         T*last(){
             return stk.getTail();
+        }
+        bool isEmpty(){
+            return !(top+1);
         }
         //virtual ~LLStack();
 
